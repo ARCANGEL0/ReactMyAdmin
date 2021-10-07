@@ -29,7 +29,7 @@ const Input = (props, { theme }) => {
             inverted
             hover
           >
-            <input style={{border: 0}} className={`${ props.className }`} id={`${ props.id }`}type="text" />
+            <input style={{border: 0}} className={`${ props.className }`} id={`${ props.id }`} name={`${ props.name}`}type="text" />
 
           </FramePentagon>
             

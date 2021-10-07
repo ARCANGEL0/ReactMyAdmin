@@ -3,6 +3,10 @@
   margin-top: 15vh;
 }
 
+a {
+  color: inherit !important;
+}
+
 input,
 input:focus,
 input:hover,
@@ -24,7 +28,7 @@ input:active {
 
 .loginDiv {
   width: 40vw;
-  height: 50vh;
+  height: auto;
 }
 
 .loginPage {
@@ -42,3 +46,14 @@ input:active {
 }
 
 /*  LOGIN PAGE */
+
+.loginAlerts {
+  margin-top: 25px;
+  text-align: center;
+}
+.erroConexao {
+  color: red;
+}
+.loginConexao {
+  color: chartreuse;
+}

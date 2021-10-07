@@ -14,8 +14,9 @@ const bleepsSettings = { assemble: { player: 'assemble' } };
 
 
 function Frame(props) {
-  const [activate, setActivate] = React.useState(true);
+  const [activate, setActive] = React.useState(true);
 
+  
   return (
 
     <ArwesThemeProvider>

@@ -12,7 +12,7 @@ const playersSettings = { assemble: { src: [SOUND_ASSEMBLE_URL], loop: true } };
 const bleepsSettings = { assemble: { player: 'assemble' } };
 
 
-function Frame(props) {
+function TextS(props) {
   const [activate, setActivate] = React.useState(true);
 
   return (
@@ -46,7 +46,7 @@ function Frame(props) {
   );
 }
 
-export default Frame;
+export default TextS;
 
 
 
