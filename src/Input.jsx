@@ -41,7 +41,7 @@ const  Input = forwardRef((props, ref)=> {
             inverted
             hover
           >
-            <input style={{border: 0}} value= {value} className={`${ props.className }`} id={`${ props.id }`} name={`${ props.name}`}type="text" />
+            <input style={{border: 0}} value= {value} type={props.tipo} className={`${ props.className }`} id={`${ props.id }`} name={`${ props.name}`}/>
 
           </FramePentagon>
             

@@ -75,10 +75,10 @@ function App() {
       <form onSubmit={handleSubmit}>
         <div className="loginPage">
            <Text theme={loginCheckTxt} tipo='h4' >Usuário</Text>
-           <Input ref={loginU} theme={loginCheck} className="user" id="user" name="user"></Input>
+           <Input tipo="text" ref={loginU} theme={loginCheck} className="user" id="user" name="user"></Input>
            <br />
            <Text theme={loginCheckTxt} tipo='h4' >Senha</Text>
-           <Input ref={loginP} theme={loginCheck} name="pass" className="pass" id="pass"></Input>
+           <Input tipo="password" ref={loginP} theme={loginCheck} name="pass" className="pass" id="pass"></Input>
 
          
 
