@@ -18,9 +18,9 @@ const Btn = (props) => {
             <Animator animator={{ animate: true }}>
 
                 <Button palette={props.theme} active className={`${ props.className }`}>
-                <Text tipo={props.tipoTexto} >      
+                     
                     {props.children}
-                    </Text>
+                  
                 </Button>
 
             </Animator>

@@ -34,7 +34,11 @@ function TextS(props) {
        combine: true,
        duration: { stagger: 50 }
      }}>
-       <Text as={props.tipo}>
+       <Text
+       
+                 style={{color:props.theme}}
+
+       as={props.tipo}>
 {props.children}     
   </Text>
    

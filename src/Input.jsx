@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useImperativeHandle,forwardRef } from 'react';
 
 import { AnimatorGeneralProvider } from '@arwes/animation';
 import { BleepsProvider } from '@arwes/sounds';
@@ -11,8 +11,20 @@ const audioSettings = { common: { volume: 1.25 } };
 const playersSettings = { assemble: { src: [SOUND_ASSEMBLE_URL], loop: true } };
 const bleepsSettings = { assemble: { player: 'assemble' } };
 
-const Input = (props, { theme }) => {
-    
+const  Input = forwardRef((props, ref)=> {
+  const [value, setValue] = React.useState();
+
+
+  function resetInput() {
+   
+    setValue('')
+  }
+ 
+  useImperativeHandle(ref, () => {
+   return {
+     resetInput: resetInput
+   };
+ });
 
     return (
         <ArwesThemeProvider>
@@ -25,11 +37,11 @@ const Input = (props, { theme }) => {
             <AnimatorGeneralProvider animator={animatorGeneral}>
             <FramePentagon
             animator={{ animate:true  }}
-            palette={theme}
+            palette={props.theme}
             inverted
             hover
           >
-            <input style={{border: 0}} className={`${ props.className }`} id={`${ props.id }`} name={`${ props.name}`}type="text" />
+            <input style={{border: 0}} value= {value} className={`${ props.className }`} id={`${ props.id }`} name={`${ props.name}`}type="text" />
 
           </FramePentagon>
             
@@ -40,5 +52,5 @@ const Input = (props, { theme }) => {
         </ArwesThemeProvider>
       );
 }
-
+)
 export default Input;

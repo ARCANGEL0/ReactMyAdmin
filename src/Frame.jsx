@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useImperativeHandle, forwardRef } from 'react';
 
 import { AnimatorGeneralProvider } from '@arwes/animation';
 import { BleepsProvider } from '@arwes/sounds';
@@ -13,10 +13,19 @@ const playersSettings = { assemble: { src: [SOUND_ASSEMBLE_URL], loop: true } };
 const bleepsSettings = { assemble: { player: 'assemble' } };
 
 
-function Frame(props) {
+const  Frame = forwardRef((props, ref)=> {
   const [activate, setActive] = React.useState(true);
 
-  
+ function removeFrame() {
+   
+   setActive(false)
+ }
+
+ useImperativeHandle(ref, () => {
+  return {
+    removeFrame: removeFrame
+  };
+});
   return (
 
     <ArwesThemeProvider>
@@ -26,8 +35,11 @@ function Frame(props) {
         bleepsSettings={bleepsSettings}
       >
         <StylesBaseline />
-        <AnimatorGeneralProvider animator={animatorGeneral}>
-          <FrameCorners animator={{ activate }}
+        <AnimatorGeneralProvider
+         animator={animatorGeneral}>
+          <FrameCorners 
+          animator={{activate }}
+          className={props.classCpm}
           palette={props.theme}
           cornerWidth={1}
           cornerLength={20}
@@ -44,5 +56,5 @@ function Frame(props) {
 
   );
 }
-
+)
 export default Frame;

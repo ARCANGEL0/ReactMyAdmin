@@ -1,20 +1,49 @@
 
-import React from 'react'
+import React, {useRef} from 'react'
 
 import Frame from './Frame'
 import Input from './Input'
 import Text from './Text'
 import Button from './Button'
+
 import './App.css';
 
 
-
 function App() {
-  const [loginFeito, setLogin] = React.useState(false)
-  const [erroConexao, setErro] = React.useState(false)
+  const [loginCheck, setLogin] = React.useState('primary')
+  const [loginCheckTxt, setLoginTxt] = React.useState('primary')
+  const [active, setActive] = React.useState(false)
+
+  const loginFrame = useRef();
+  const loginU = useRef();
+  const loginP = useRef();
+
+  function removeFrame() {
+
+    loginFrame.current.removeFrame();
+    loginU.current.resetInput();
+    loginP.current.resetInput();
+
+  }
+  function ErrorLogin() {
+    setLogin('error');
+    setLoginTxt('red');
+      setTimeout(() => setLogin('primary'), 2000);
+      setTimeout(() => setLoginTxt('#7efcf6'), 2000);
+
+  }
+
+  function Login() {
+    setLogin('success')
+    setLoginTxt('chartreuse');
+      setTimeout(() => setLogin('primary'), 2000);
+      setTimeout(() => setLoginTxt('#7efcf6'), 2000);
+      setTimeout(() => removeFrame(), 2000)
+  }
 
 
-  function handleSubmit(event) {
+
+  function handleSubmit(event, form) {
     event.preventDefault();
     const data = new FormData(event.target);
     const axios = require('axios')
@@ -24,13 +53,11 @@ function App() {
     axios.post(`http://localhost:800/login`,  {user : data.get("user"), pass : data.get("pass")})
     .then(res => {
       if (res.data.connected) {
-        setLogin(true);
-        setErro(false);
+      Login()
 
       }
       else {
-        setErro(true);
-        setLogin(false);
+      ErrorLogin()
       }
 
 
@@ -43,39 +70,26 @@ function App() {
 
   <div className="content">
 
-    <Frame theme='primary' className='loginDiv'>
+   {/* frame login */}
+    <Frame ref={loginFrame} actv={active} theme={loginCheck} className='loginDiv'>
       <form onSubmit={handleSubmit}>
         <div className="loginPage">
-           <Text tipo='h4' >Usuário</Text>
-           <Input className="user" id="user" name="user"></Input>
+           <Text theme={loginCheckTxt} tipo='h4' >Usuário</Text>
+           <Input ref={loginU} theme={loginCheck} className="user" id="user" name="user"></Input>
            <br />
-           <Text tipo='h4' >Senha</Text>
-           <Input name="pass" className="pass" id="pass"></Input>
+           <Text theme={loginCheckTxt} tipo='h4' >Senha</Text>
+           <Input ref={loginP} theme={loginCheck} name="pass" className="pass" id="pass"></Input>
 
-           { loginFeito ?       <div className="loginAlerts">
-
-<Frame theme='success' className='loginConexao'> 
-<Text tipo='a' > 
-Conectado ! 
-</Text>
-</Frame>
-
-</div> : null }
-
-
-{ erroConexao ?       <div className="loginAlerts">
-
-<Frame theme='error' className='erroConexao'> 
-<Text tipo='a' > 
-Erro na Conexão ! 
-</Text>
-</Frame>
-
-</div> : null }
-
+         
 
            <div className="loginBtnDiv">
-             <Button tipoTexto='h4' className='loginBtn'> Login</Button>
+             <Button theme={loginCheck} tipoTexto='h4' className='loginBtn'>
+              
+               <Text theme={loginCheckTxt} tipo='h4' >
+          
+                Login
+               </Text>
+                </Button>
            </div>
 
         </div>
