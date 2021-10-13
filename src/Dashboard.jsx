@@ -72,8 +72,8 @@ const  Dashboard = () => {
     })
   
   }
-  if(isLogged){
-   history.push('/dashboard')
+  if(!isLogged){
+   history.push('/')
   }
   React.useEffect(() => {
     // Carrega o tipo de frame

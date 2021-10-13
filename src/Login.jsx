@@ -63,6 +63,8 @@ const  LoginCmp = () => {
     .then(res => {
       if (res.data.connected) {
       Login()
+      localStorage.setItem('logged',res.data.connected)
+
 
       }
       else {
