@@ -8,7 +8,7 @@ import Text from './Text'
 import Button from './Button'
 
 import './App.css';
-const  LoginCmp = () => {
+const  Dashboard = () => {
 
 
 
@@ -19,17 +19,16 @@ const  LoginCmp = () => {
 
   const [isLogged, setLoginState] = React.useState(false)
 
-  const loginFrame = useRef();
-  const loginU = useRef();
-  const loginP = useRef();
-
+  const dashboardFrame = useRef();
+  const tablesFrame = useRef();
+  const navFrame = useRef();
+  const contentMain = useRef();
   const history = createBrowserHistory({forceRefresh:true});
 
   function removeFrame() {
 
-    loginFrame.current.removeFrame();
-    loginU.current.resetInput();
-    loginP.current.resetInput();
+    dashboardFrame.current.removeFrame();
+ 
 
   }
   function ErrorLogin() {
@@ -78,37 +77,45 @@ const  LoginCmp = () => {
   }
   React.useEffect(() => {
     // Carrega o tipo de frame
-    loginFrame.current.Corner()
+    tablesFrame.current.Pentagon()
+    navFrame.current.Lines()
+    contentMain.current.Corner()
   }, );
+  
   return (
 <>
   
 
-    <Frame ref={loginFrame} actv={active} theme={loginCheck} className='loginDiv'>
-      <form onSubmit={handleSubmit}>
-        <div className="loginPage">
-           <Text theme={loginCheckTxt} tipo='h4' >Usuário</Text>
-           <Input tipo="text" ref={loginU} theme={loginCheck} className="user" id="user" name="user"></Input>
-           <br />
-           <Text theme={loginCheckTxt} tipo='h4' >Senha</Text>
-           <Input tipo="password" ref={loginP} theme={loginCheck} name="pass" className="pass" id="pass"></Input>
+    <Frame ref={dashboardFrame} actv={active} theme='primary' className='dashDiv'>
+        <div className="dashContent">
+     <div className="leftPanel">
+    <Frame ref={tablesFrame} actv={active} theme='success' className='header'>
+ArcSQL
+</Frame>
+   
+    <Frame ref={tablesFrame} actv={active} theme='error' className='tablesFrame'>
+<Text as="h4"> Tables</Text>
 
-         
+</Frame>
+</div>
+<div className="nav">
+<Frame ref={navFrame} actv={active} theme='error' className='navBar'>
+<center>Navbar</center>
+</Frame>
+<div className="mainContent">
+<Frame ref={contentMain} actv={active} theme='primary' className='frameContent'>
+<center>Content</center> 
+</Frame>
 
-           <div className="loginBtnDiv">
-             <Button theme={loginCheck} tipoTexto='h4' className='loginBtn'>
-              
-               <Text theme={loginCheckTxt} tipo='h4' >
-          
-                Login
-               </Text>
-                </Button>
-           </div>
+</div>
+</div>  
 
-        </div>
-      </form>   
+
+</div>
+
+
     </Frame>
     </>
     );
 }
-export default LoginCmp;
+export default Dashboard;

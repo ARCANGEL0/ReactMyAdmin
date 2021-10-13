@@ -3,7 +3,7 @@ import React, {useRef} from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom' 
 
 import LoginCmp from './Login'
-import Frame from './Frame'
+import Dashboard from './Dashboard'
 
 import './App.css';
 
@@ -16,18 +16,21 @@ const App = ()=> {
 
   return (
 
-  <div className="content">
-
+<>
    {/* frame login */}
    <Router forceRefresh={true}>
 
     <Route
                   path="/"
                   exact
-                  
+                  render={() => (
+                    <>
 
-                 >
-                <LoginCmp />
+                 
+                   <div className="content">                        <LoginCmp/>
+</div>
+                        </>
+)}>
                      </Route>
 
 
@@ -37,8 +40,8 @@ const App = ()=> {
                   render={() => (
                     <>
    
-   
-   <Frame theme="success">Logged in</Frame>
+                        <div className="dashConteiner">                        <Dashboard/>
+</div>
 
                     </>
                   )}
@@ -48,7 +51,8 @@ const App = ()=> {
     
     
     </Router>
-  </div>
+    </>
+
     );
 }
 

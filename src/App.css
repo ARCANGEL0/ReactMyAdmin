@@ -57,3 +57,52 @@ input:active {
 .loginConexao {
   color: chartreuse;
 }
+
+/* dashboard */
+
+.dashDiv {
+  width: 96vw;
+  height: 96vh;
+}
+.dashConteiner {
+  margin-left: 1vw;
+  margin-top: 1vh;
+}
+
+.leftPanel {
+  display: flex;
+  flex-direction: column;
+  width: 8vw;
+}
+.header {
+  width: 5vw;
+}
+.tablesFrame {
+  height: 86vh;
+  width: 5vw;
+}
+.dashContent {
+  display: flex;
+}
+.nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 3vw;
+  width: 30vw;
+}
+.navBar {
+  width: 86.5vw;
+}
+
+.mainContent {
+  display: flex;
+  width: 10vw;
+  height: 88vh;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.frameContent {
+  width: 86vw;
+}

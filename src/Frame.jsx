@@ -3,7 +3,7 @@ import React, { useImperativeHandle, forwardRef } from 'react';
 
 import { AnimatorGeneralProvider } from '@arwes/animation';
 import { BleepsProvider } from '@arwes/sounds';
-import { ArwesThemeProvider, StylesBaseline, FrameCorners } from '@arwes/core';
+import * as Arwes from '@arwes/core';
 import './App.css';
 const SOUND_ASSEMBLE_URL = 'https://playground.arwes.dev/assets/sounds/typing.mp3';
 
@@ -15,29 +15,51 @@ const bleepsSettings = { assemble: { player: 'assemble' } };
 
 const  Frame = forwardRef((props, ref)=> {
   const [activate, setActive] = React.useState(true);
+  const [Frame, setFrame] = React.useState(Arwes.FrameBox)
 
  function removeFrame() {
    
    setActive(false)
  }
 
+ function Hexagon() {
+   setFrame(Arwes.FrameHexagon)
+ }
+
+ function Pentagon () { 
+   setFrame(Arwes.FramePentagon)
+ }
+ function Lines () {
+    setFrame(Arwes.FrameLines)
+ }
+ function Corner () { 
+   setFrame(Arwes.FrameCorners)
+ }
+ function Underlines () { setFrame(Arwes.FrameUnderline)
+ }
+
  useImperativeHandle(ref, () => {
   return {
-    removeFrame: removeFrame
+    removeFrame: removeFrame,
+    Hexagon: Hexagon,
+    Pentagon: Pentagon,
+    Lines: Lines,
+    Corner: Corner,
+    Underlines: Underlines
   };
 });
   return (
 
-    <ArwesThemeProvider>
+    <Arwes.ArwesThemeProvider>
       <BleepsProvider
         audioSettings={audioSettings}
         playersSettings={playersSettings}
         bleepsSettings={bleepsSettings}
       >
-        <StylesBaseline />
+        <Arwes.StylesBaseline />
         <AnimatorGeneralProvider
          animator={animatorGeneral}>
-          <FrameCorners 
+          <Frame
           animator={{activate }}
           className={props.classCpm}
           palette={props.theme}
@@ -49,10 +71,10 @@ const  Frame = forwardRef((props, ref)=> {
               <div className={`${ props.className }`}>     
               {props.children}  
 </div>
-          </FrameCorners>
+          </Frame>
         </AnimatorGeneralProvider>
       </BleepsProvider>
-    </ArwesThemeProvider>
+    </Arwes.ArwesThemeProvider>
 
   );
 }
