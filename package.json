@@ -27,10 +27,11 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start & npm run server",
+    "start": "npm run react & npm run server",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "react": "react-scripts start",
     "server": "node src/sql.js"
   },
   "eslintConfig": {

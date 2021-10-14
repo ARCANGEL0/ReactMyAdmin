@@ -8,6 +8,7 @@ import Text from './Text'
 import Button from './Button'
 
 import './App.css';
+
 const  Dashboard = () => {
 
 
@@ -49,38 +50,24 @@ const  Dashboard = () => {
 
   }
 
-
-
-  function handleSubmit(event, form) {
-    event.preventDefault();
-    const data = new FormData(event.target);
-    const axios = require('axios')
+ 
   
-
-
-    axios.post(`http://localhost:800/login`,  {user : data.get("user"), pass : data.get("pass")})
-    .then(res => {
-      if (res.data.connected) {
-      Login()
-
-      }
-      else {
-      ErrorLogin()
-      }
-
-
-    })
-  
-  }
-  if(!isLogged){
+  if(!localStorage.getItem('logged')){
    history.push('/')
   }
+
   React.useEffect(() => {
+    let axios = require('axios')
+
     // Carrega o tipo de frame
+    axios.get('http://localhost:800/dashboard')
+.then(response => console.log(response.data));
+
+    
     tablesFrame.current.Pentagon()
     navFrame.current.Lines()
     contentMain.current.Corner()
-  }, );
+  },[] );
   
   return (
 <>
