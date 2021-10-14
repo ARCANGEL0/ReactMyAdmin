@@ -32,23 +32,7 @@ const  Dashboard = () => {
  
 
   }
-  function ErrorLogin() {
-    setLogin('error');
-    setLoginTxt('red');
-      setTimeout(() => setLogin('primary'), 2000);
-      setTimeout(() => setLoginTxt('#7efcf6'), 2000);
-
-  }
-
-  function Login() {
-    setLogin('success')
-    setLoginTxt('chartreuse');
-      setTimeout(() => setLogin('primary'), 2000);
-      setTimeout(() => setLoginTxt('#7efcf6'), 2000);
-      setTimeout(() => removeFrame(), 2000)
-      setTimeout(()=> setLoginState(true),3000);
-
-  }
+  
 
  
   
@@ -61,8 +45,8 @@ const  Dashboard = () => {
 
     // Carrega o tipo de frame
     axios.get('http://localhost:800/dashboard')
-.then(response => console.log(response.data));
-
+.then(response => alert(response.data));
+// precisa se usar um loop para cada database e inserir no frame do render
     
     tablesFrame.current.Pentagon()
     navFrame.current.Lines()
@@ -80,7 +64,7 @@ const  Dashboard = () => {
 ArcSQL
 </Frame>
    
-    <Frame ref={tablesFrame} actv={active} theme='error' className='tablesFrame'>
+    <Frame ref={tablesFrame} aactv={active} theme='error' className='tablesFrame'>
 <Text as="h4"> Tables</Text>
 
 </Frame>

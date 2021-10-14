@@ -26,9 +26,9 @@ app.get('/dashboard', (req,res) => {
        
         db.query('show databases;', function(err, tables) {
             if (!err) {
-                console.log(JSON.stringify(tables));
-            } else {
-                console.log('Error while performing Query.');
+                res.send(JSON.stringify(tables));
+            } else{
+                res.send('Error while performing Query.');
             }
         });
         db.end();
