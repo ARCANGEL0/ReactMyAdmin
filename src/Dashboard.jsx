@@ -20,12 +20,17 @@ const  Dashboard = () => {
 
   const [isLogged, setLoginState] = React.useState(false)
 
+ 
+  let databases = [];
+
   const dashboardFrame = useRef();
   const tablesFrame = useRef();
   const navFrame = useRef();
   const contentMain = useRef();
   const history = createBrowserHistory({forceRefresh:true});
 
+
+ 
   function removeFrame() {
 
     dashboardFrame.current.removeFrame();
@@ -35,17 +40,28 @@ const  Dashboard = () => {
   
 
  
-  
+
+  let axios = require('axios')
+
+  // Carrega o tipo de frame
+  axios.get('http://localhost:800/dashboard')
+.then(response =>
+  response.data.forEach((Database) => {
+    databases.push(Database)
+  })
+    
+)
+
   if(!localStorage.getItem('logged')){
    history.push('/')
   }
 
   React.useEffect(() => {
-    let axios = require('axios')
+   
 
-    // Carrega o tipo de frame
-    axios.get('http://localhost:800/dashboard')
-.then(response => alert(response.data));
+
+
+    
 // precisa se usar um loop para cada database e inserir no frame do render
     
     tablesFrame.current.Pentagon()
@@ -64,8 +80,13 @@ const  Dashboard = () => {
 ArcSQL
 </Frame>
    
-    <Frame ref={tablesFrame} aactv={active} theme='error' className='tablesFrame'>
-<Text as="h4"> Tables</Text>
+    <Frame ref={tablesFrame} actv={active} theme='error' className='tablesFrame'>
+<Text as="h4"> 
+{ 
+console.log(databases)
+}
+
+</Text>
 
 </Frame>
 </div>
