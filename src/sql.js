@@ -24,9 +24,10 @@ app.get('/dashboard', (req,res) => {
     
         db.connect();
        
-        db.query('show databases;', function(err, tables) {
+        db.query('show databases;', function(err, databases) {
             if (!err) {
-                res.send(JSON.stringify(tables));
+                res.send(JSON.stringify(databases));
+                console.log(JSON.stringify(databases));
             } else{
                 res.send('Error while performing Query.');
             }

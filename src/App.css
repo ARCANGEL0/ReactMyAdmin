@@ -7,6 +7,12 @@ a {
   color: inherit !important;
 }
 
+a:hover,
+button:hover,
+li:hover {
+  color: #99ffff;
+}
+
 input,
 input:focus,
 input:hover,
@@ -58,6 +64,20 @@ input:active {
   color: chartreuse;
 }
 
+/* database items */
+
+.logoutBtn {
+  background: none;
+  color: cyan;
+}
+.leftPanel h1 {
+  word-wrap: break-word;
+  white-space: normal;
+}
+li {
+  list-style-type: none;
+}
+
 /* dashboard */
 
 .dashDiv {
@@ -72,37 +92,37 @@ input:active {
 .leftPanel {
   display: flex;
   flex-direction: column;
-  width: 8vw;
+  width: 14vw;
 }
 .header {
   width: 5vw;
 }
 .tablesFrame {
   height: 86vh;
-  width: 5vw;
+  width: auto;
 }
 .dashContent {
   display: flex;
 }
-.nav {
+.rightPanel {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   height: 3vw;
-  width: 30vw;
+  width: 4vw;
 }
 .navBar {
-  width: 86.5vw;
+  width: 81vw;
 }
 
 .mainContent {
   display: flex;
-  width: 10vw;
+  width: auto;
   height: 88vh;
   margin-left: 10px;
   margin-top: 10px;
 }
 
 .frameContent {
-  width: 86vw;
+  width: 80vw;
 }
