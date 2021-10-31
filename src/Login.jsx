@@ -76,7 +76,7 @@ const  LoginCmp = () => {
   
   }
   if(isLogged){
-   history.push('/dashboard')
+   history.push('/')
   }
   React.useEffect(() => {
     // Carrega o tipo de frame

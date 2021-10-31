@@ -4,21 +4,20 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import LoginCmp from './Login'
 import Dashboard from './Dashboard'
-
+import Content from './Content'
 import './App.css';
 
 
 const App = ()=> {
 
 
-    const [isLogged, setLoginState] = React.useState(false)
   
 
   return (
 
 <>
    {/* frame login */}
-   <Router forceRefresh={true}>
+   <Router forceRefresh={false}>
 
     <Route
                   path="/"
@@ -26,29 +25,36 @@ const App = ()=> {
                   render={() => (
                     <>
 
-                 
-                   <div className="content">                        <LoginCmp/>
+{  localStorage.getItem('logged') ? 
+                        <div className="dashConteiner">                        <Dashboard/>
 </div>
+:  
+<div className="content">                        <LoginCmp/>
+</div>
+}
+                 
+             
                         </>
 )}>
                      </Route>
 
+<Route 
+            path="/Database/:data"
+            exact
+            element={<Content />}
+            render = {() => (
+              <>
+              <div className="dashConteiner"> 
 
-<Route
-                  path="/dashboard"
-                  exact
-                  render={() => (
-                    <>
-   
-                        <div className="dashConteiner">                        <Dashboard/>
-</div>
-
-                    </>
-                  )}
-                  >
-                      </Route>
+          
+              <Dashboard content=""/> 
               
-    
+              </div>
+              </>
+            )}
+
+/>
+
     
     </Router>
     </>

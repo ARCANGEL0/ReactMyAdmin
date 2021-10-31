@@ -80,6 +80,9 @@ li {
 
 /* dashboard */
 
+.databaseItem {
+  font-size: 12px;
+}
 .dashDiv {
   width: 96vw;
   height: 96vh;

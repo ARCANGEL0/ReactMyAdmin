@@ -1,26 +1,23 @@
 
 import React, {useRef, useEffect} from 'react'
-import { createBrowserHistory } from 'history'
 
 import Frame from './Frame'
-import Input from './Input'
+import Content from './Content' 
 import Text from './Text'
 import Button from './Button'
 import { CgLogOut } from 'react-icons/cg';
 
 import './App.css';
+import { useHistory } from 'react-router'
 
   
 const  Dashboard = () => {
 
   
-  const [loginCheck, setLogin] = React.useState('primary')
   const [databases, setDatabases] = React.useState([])
 
-  const [loginCheckTxt, setLoginTxt] = React.useState('primary')
   const [active, setActive] = React.useState(false)
 
-  const [isLogged, setLoginState] = React.useState(false)
 
  
   const header = useRef();
@@ -28,7 +25,8 @@ const  Dashboard = () => {
   const tablesFrame = useRef();
   const navFrame = useRef();
   const contentMain = useRef();
-  const history = createBrowserHistory({forceRefresh:true});
+  const databaseItem = useRef();
+  const history = useHistory();
 
 
 
@@ -49,8 +47,7 @@ const  Dashboard = () => {
   
   useEffect(() => {
      async function getData() {
-      const { data } = await axios.get('http://localhost:800/dashboard')
-        console.log(data)  
+      const { data } = await axios.get('http://localhost:800/getDatabases')
         setDatabases(data)
     }
     
@@ -62,6 +59,23 @@ const  Dashboard = () => {
 
   if(!localStorage.getItem('logged')){
    history.push('/')
+  }
+
+  function dataItem(databaseitem) { 
+    var url = 'http://localhost:800/Database/'+databaseitem
+
+
+    
+      axios.get(url)
+      .then(function (response) {
+        console.log(response.data);
+        // I need this data here ^^
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+
+
   }
 
   React.useEffect(() => {
@@ -100,10 +114,17 @@ ArcSQL <br/>
 
 
 
+    <br />
 
 {databases.map(data => (
   <>
- <li ><Text as="h1" >  <a className="databaseItem" href={data.Database} key={data.Database}>{data.Database}</a></Text></li><br />
+ <li >
+ <Frame ref = {databaseItem} actv={active} theme='primary' className='databaseItem'>
+
+<Text as="h1" >  <button style={{background: 'none', color: 'cyan'}} className="databaseItem" onClick={dataItem.bind(this, data.Database)} key={data.Database}>{data.Database}</button></Text>
+</Frame>
+
+</li><br />
 </>
 
 ))}
@@ -124,7 +145,9 @@ ArcSQL <br/>
 <div className="mainContent">
 <Frame ref={contentMain} actv={active} theme='primary' className='frameContent'>
 <Text as='h2'>
-<center>Content</center> 
+
+<Content>  </Content>
+
 </Text>
 </Frame>
 

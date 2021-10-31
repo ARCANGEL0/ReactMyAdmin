@@ -9,7 +9,7 @@ app.use(cors())
  
 
 
-app.get('/dashboard', (req,res) => {
+app.get('/getDatabases', (req,res) => {
     var db = mysql.createConnection({
 
         user:app.settings.user,
@@ -19,15 +19,13 @@ app.get('/dashboard', (req,res) => {
         database:"mysql"
     });
     
-    console.log(app.settings.user)
-    console.log(app.settings.pass)
+  
     
         db.connect();
        
         db.query('show databases;', function(err, databases) {
             if (!err) {
                 res.send(JSON.stringify(databases));
-                console.log(JSON.stringify(databases));
             } else{
                 res.send('Error while performing Query.');
             }
@@ -36,7 +34,39 @@ app.get('/dashboard', (req,res) => {
 
 })
 
+app.get('/Database/:datab' , (req,res) => 
+{
+        const database = req.params.datab
+        console.log('test')
+        
+        console.log(app.settings.user)
+        console.log(app.settings.pass)
 
+
+        var db = mysql.createConnection({
+
+            user:app.settings.user,
+            host:"localhost",
+            multipleStatements: true,
+            password:app.settings.pass,
+            database:database
+        });
+
+        db.connect();
+
+
+
+        db.query('show tables;',(err,tables)=>{
+            if (!err) {
+                res.send(JSON.stringify(tables));
+            } else{
+                res.send('Error while performing Query.');
+            }
+        })
+        db.end();
+
+        
+})
 
 app.post('/login',(req,res) => {
 
