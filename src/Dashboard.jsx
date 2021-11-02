@@ -15,7 +15,7 @@ const  Dashboard = () => {
 
   
   const [databases, setDatabases] = React.useState([])
-
+  const [tables, setTables] = React.useState([])
   const [active, setActive] = React.useState(false)
 
 
@@ -65,12 +65,45 @@ const  Dashboard = () => {
     var url = 'http://localhost:800/Database/'+databaseitem
 
 
+
+
+
+
+
+
+
+
+
+
     
       axios.get(url)
       .then(function (response) {
-        console.log(response.data);
+
+        var result = response.data.map(element => Object.values(element)).flat()
+        
+        console.log(result)
+            // use val
+         setTables(result)
+        
+
+          
         // I need this data here ^^
     })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     .catch(function (error) {
         console.log(error);
     });
@@ -100,7 +133,7 @@ const  Dashboard = () => {
     <Frame ref={dashboardFrame} actv={active} theme='primary' className='dashDiv'>
         <div className="dashContent">
      <div className="leftPanel">
-    <Frame ref={header} actv={active} theme='success' className='header'>
+    <Frame ref={header} actv={active} theme='error' className='header'>
       <>
       <Text as='h2'>
 ArcSQL <br/>
@@ -110,7 +143,7 @@ ArcSQL <br/>
 </>
 </Frame>
    
-    <Frame ref={tablesFrame} actv={active} theme='error' className='tablesFrame'>
+    <Frame ref={tablesFrame} actv={active} theme='primary' className='tablesFrame'>
 
 
 
@@ -136,17 +169,16 @@ ArcSQL <br/>
 </div>
 <div className="rightPanel">
   <div className="nav">
-<Frame ref={navFrame} actv={active} theme='error' className='navBar'>
+<Frame ref={navFrame} actv={active} theme='primary' className='navBar'>
 <Text as='h2'>
-<center>Navbar</center>
-</Text>
+Visualizar | Estrutura | Pesquisar | Inserir | SQL | Gatilhos & Eventos & Functions |</Text>
 </Frame>
 </div>
 <div className="mainContent">
 <Frame ref={contentMain} actv={active} theme='primary' className='frameContent'>
 <Text as='h2'>
 
-<Content>  </Content>
+<Content cont={tables}>  </Content>
 
 </Text>
 </Frame>

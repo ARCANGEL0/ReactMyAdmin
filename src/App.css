@@ -85,11 +85,12 @@ li {
 }
 .dashDiv {
   width: 96vw;
-  height: 96vh;
+  height: auto;
 }
 .dashConteiner {
   margin-left: 1vw;
   margin-top: 1vh;
+  height: auto;
 }
 
 .leftPanel {
@@ -101,17 +102,14 @@ li {
   width: 5vw;
 }
 .tablesFrame {
-  height: 86vh;
+  height: auto;
   width: auto;
 }
 .dashContent {
   display: flex;
 }
 .rightPanel {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  height: 3vw;
+  height: auto;
   width: 4vw;
 }
 .navBar {
@@ -121,9 +119,8 @@ li {
 .mainContent {
   display: flex;
   width: auto;
-  height: 88vh;
+  height: auto;
   margin-left: 10px;
-  margin-top: 10px;
 }
 
 .frameContent {

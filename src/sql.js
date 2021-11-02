@@ -37,10 +37,7 @@ app.get('/getDatabases', (req,res) => {
 app.get('/Database/:datab' , (req,res) => 
 {
         const database = req.params.datab
-        console.log('test')
-        
-        console.log(app.settings.user)
-        console.log(app.settings.pass)
+      
 
 
         var db = mysql.createConnection({
@@ -58,6 +55,9 @@ app.get('/Database/:datab' , (req,res) =>
 
         db.query('show tables;',(err,tables)=>{
             if (!err) {
+                
+                
+                console.log(tables)
                 res.send(JSON.stringify(tables));
             } else{
                 res.send('Error while performing Query.');

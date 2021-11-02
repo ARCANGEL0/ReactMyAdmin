@@ -15,6 +15,8 @@ const bleepsSettings = { assemble: { player: 'assemble' } };
 
 
 const  Frame = forwardRef((props, ref)=> {
+
+
   const [activate, setActive] = React.useState(true);
   const [Frame, setFrame] = React.useState(Arwes.FrameBox)
     const {data} = useParams();
@@ -50,8 +52,12 @@ const  Frame = forwardRef((props, ref)=> {
   };
 });
   return (
-
-    <center> {data} </center>
+<ul>
+    {props.cont.map(function(db){
+                        return <li>{db}</li>;
+                      })}
+      
+    </ul>
   );
 }
 )
