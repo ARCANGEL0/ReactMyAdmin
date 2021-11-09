@@ -49,78 +49,100 @@ const bleepsSettings = {
 };
 
 
-const Frame = forwardRef((props, ref) => {
+const Content = forwardRef((props, ref) => {
 
 
       const [activate, setActive] = React.useState(true);
       const [Frame, setFrame] = React.useState(Arwes.FrameBox)
 
-      const [datatables, setDatatables] = React.useState({
-        columns: [{
+
+      
+
+
+    const datatables = 
+        {
+        columns: [
+          {
           label: 'Tabela',
           field: 'tabela',
           width: 150,
           attributes: {
             'aria-controls': 'DataTable',
             'aria-label': 'Tabela',
+          }},
+          {
+            label: 'Visualizar',
+            field: 'visualizar',
+            width: 80,
+            attributes: {
+              'aria-controls': 'DataTable',
+              'aria-label': 'Visualizar',
+            },
           },
-        }, ],
+          {
+            label: 'Estrutura',
+            field: 'estrutura',
+            width: 80,
+            attributes: {
+              'aria-controls': 'DataTable',
+              'aria-label': 'Estrutura',
+            },
+          },
+          {
+            label: 'Procurar',
+            field: 'procurar',
+            width: 80,
+            attributes: {
+              'aria-controls': 'DataTable',
+              'aria-label': 'Procurar',
+            },
+          },
+          {
+            label: 'Inserir',
+            field: 'inserir',
+            width: 80,
+            attributes: {
+              'aria-controls': 'DataTable',
+              'aria-label': 'Inserir',
+            },
+          },
+          {
+            label: 'Apagar',
+            field: 'apagar',
+            width: 80,
+            attributes: {
+              'aria-controls': 'DataTable',
+              'aria-label': 'Apagar',
+            },
+          }
+      ],
 
-        rows: [{
-          tabela: 'Tiger Nixon',
+rows:
+[]
+        
+        
+      
 
-        }, {
-          tabela: 'Garrett Winters',
+      
+      }
 
-        }, {
-          tabela: 'Ashton Cox',
-
-        }, {
-          tabela: 'Cedric Kelly',
-
-        }, {
-          tabela: 'Airi Satou',
-        }, {
-          tabela: 'Brielle Williamson',
-
-        }, {
-          tabela: 'Herrod Chandler',
-
-        }, {
-          tabela: 'Rhona Davidson',
-
-        }, {
-          tabela: 'Colleen Hurst',
-
-        }, {
-          tabela: 'Sonya Frost',
-
-        }, {
-          tabela: 'Jena Gaines',
-
-        }, {
-          tabela: 'Quinn Flynn',
-
-        }, {
-          tabela: 'Charde Marshall',
-
-        }, {
-          tabela: 'Haley Kennedy',
-
-        }, {
-          tabela: 'Tatyana Fitzpatrick',
-
-        }, {
-          tabela: 'Michael Silva',
-
-        }, {
-          tabela: 'Paul Byrd',
-
-        }, ],
-      })
-      const {
-        data
-      } = useParams();
+      
+        props.cont.map(function(table) {
+              let obj = {}
+                obj.tabela= table;
+                obj.visualizar="Visualizar";
+                obj.inserir="Inserir";
+                obj.apagar="Apagar";
+                obj.procurar="Procurar";
+                obj.estrutura="Estrutura";
+                datatables.rows.push(obj)
+            
+    
+        })
+      
+      console.log(datatables)
+    
+      const { data } = useParams();
 
 
       function removeFrame() {
@@ -160,47 +182,32 @@ const Frame = forwardRef((props, ref) => {
       });
       const [checkbox1, setCheckbox1] = React.useState('');
 
-      const showLogs2 = (e) => {
-        setCheckbox1(e);
-      };
 
-      return ( < >
+    
+      return ( <>
 
 
 
-        < MDBDataTableV5 hover multipleCheckboxes checkbox headCheckboxID =
-        'id4'
-        bodyCheckboxID = 'checkboxes4'
-        getValueCheckBox = {
-          (e) => {
-            showLogs2(e);
-          }
-        }
+        < MDBDataTableV5   
+        data = { datatables}
 
-
-
-        data = {
-          datatables
-        }
-        paginate = {
-          false
-        }
-
+        
+        
         info = {
           false
         }
-        paginate = {
+        paging = {
           false
         }
-        fullPagination searchTop searchBottom = {
+         searchTop searchBottom = {
           false
         }
-        materialSearch barReverse / >
+        materialSearch / >
 
 
-        < />  );
+        </>  );
 
 
       });
 
-    export default Frame;
+    export default Content;

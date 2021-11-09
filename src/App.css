@@ -78,6 +78,9 @@ li {
   list-style-type: none;
 }
 
+.mdb-dataTables_paginate {
+  display: none;
+}
 /* dashboard */
 
 .databaseItem {
