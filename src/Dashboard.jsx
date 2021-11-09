@@ -5,12 +5,13 @@ import Content from "./Content";
 import Text from "./Text";
 import Button from "./Button";
 import { CgLogOut } from "react-icons/cg";
-
+import { MdOutlineHome} from 'react-icons/md';
 import "./App.css";
 import { useHistory } from "react-router";
 
 const Dashboard = () => {
   const [databases, setDatabases] = React.useState([]);
+  const [DBselected, setDBselected] = React.useState(false)
   const [tables, setTables] = React.useState([]);
   const [active, setActive] = React.useState(false);
 
@@ -27,6 +28,9 @@ const Dashboard = () => {
     history.push("/");
   }
 
+  function home() {
+    setDBselected(false);
+  }
   function removeFrame() {
     dashboardFrame.current.removeFrame();
   }
@@ -59,6 +63,7 @@ const Dashboard = () => {
         console.log(result);
         // use val
         setTables(result);
+        setDBselected(true);
 
         // I need this data here ^^
       })
@@ -93,6 +98,10 @@ const Dashboard = () => {
                   <button className="logoutBtn" onClick={logOut}>
                     {" "}
                     <CgLogOut />{" "}
+                  </button>{" "}
+                  <button className="logoutBtn" onClick={home}>
+                    {" "}
+                    <MdOutlineHome />{" "}
                   </button>{" "}
                 </Text>{" "}
               </>{" "}
@@ -156,7 +165,8 @@ const Dashboard = () => {
               theme="primary"
               className="frameContent"
             >
-              <Content cont={tables}> </Content>
+             { DBselected ?  <Content cont={tables}> </Content> : 'main page' 
+}
             </Frame>{" "}
           </div>
         </div>
