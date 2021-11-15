@@ -26,8 +26,8 @@ const  LoginCmp = () => {
   }
 
 
-  const [loginCheck, setLogin] = React.useState('primary')
-  const [loginCheckTxt, setLoginTxt] = React.useState('primary')
+  const [loginCheck, setLogin] = React.useState('error')
+  const [loginCheckTxt, setLoginTxt] = React.useState('red')
   const [active, setActive] = React.useState(false)
 
   const [isLogged, setLoginState] = React.useState(false)
@@ -46,18 +46,18 @@ const  LoginCmp = () => {
 
   }
   function ErrorLogin() {
-    setLogin('error');
-    setLoginTxt('red');
-      setTimeout(() => setLogin('primary'), 2000);
-      setTimeout(() => setLoginTxt('#7efcf6'), 2000);
+    setLogin('secondary');
+    setLoginTxt('#ffa76c');
+      setTimeout(() => setLogin('error'), 2000);
+      setTimeout(() => setLoginTxt('red'), 2000);
 
   }
 
   function Login() {
     setLogin('success')
     setLoginTxt('chartreuse');
-      setTimeout(() => setLogin('primary'), 2000);
-      setTimeout(() => setLoginTxt('#7efcf6'), 2000);
+      setTimeout(() => setLogin('error'), 2000);
+      setTimeout(() => setLoginTxt('red'), 2000);
       setTimeout(() => removeFrame(), 2000)
       setTimeout(()=> setLoginState(true),3000);
 

@@ -18,6 +18,7 @@ button {
   height: auto;
 }
 
+
 td,
 th {
   background-color: rgba(71, 5, 5, 0.219);
@@ -44,6 +45,10 @@ input:active {
 .user,
 .pass {
   color: red;
+}
+
+.genericText{
+  color: red !important;
 }
 
 /*  GENERAL OPTIONS */

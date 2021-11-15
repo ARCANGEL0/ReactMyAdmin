@@ -95,8 +95,9 @@ const Dashboard = () => {
           <div className="leftPanel">
             <Frame ref={header} actv={active} theme="error" className="header">
               <>
-                <Text as="h2">
-                  ArcSQL <br />
+                <Text theme="red" as="h2">
+                ArcSQL
+  <br />
                   <button className="logoutBtn" onClick={logOut}>
                     {" "}
                     <CgLogOut />{" "}
@@ -125,7 +126,7 @@ const Dashboard = () => {
                       theme="error"
                       className="databaseItem"
                     >
-                      <Text as="h1">
+                      <Text  theme="red" as="h1">
                         {" "}
                         <button
                           style={{
@@ -155,7 +156,7 @@ const Dashboard = () => {
                 theme="error"
                 className="navBar"
               >
-                <Text as="h2">
+                <Text theme="red" as="h2">
                   Visualizar | Estrutura | Pesquisar | Inserir | SQL | Gatilhos
                   & Eventos & Functions |{" "}
                 </Text>{" "}
@@ -167,7 +168,7 @@ const Dashboard = () => {
               theme="error"
               className="frameContent"
             >
-             { DBselected ?  <Content cont={tables}> </Content> : 'main page' 
+             { DBselected ?  <Content cont={tables}> </Content> : <a className='genericText'>Main page </a> 
 }
             </Frame>{" "}
           </div>
