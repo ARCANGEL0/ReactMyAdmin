@@ -7,6 +7,22 @@ a {
   color: inherit !important;
 }
 
+html,
+body {
+  background-color: rgb(8, 2, 2) !important;
+}
+button {
+  background: none;
+  color: red;
+  width: auto;
+  height: auto;
+}
+
+td,
+th {
+  background-color: rgba(71, 5, 5, 0.219);
+  border-bottom: 0.8px solid rgb(220, 5, 5) !important;
+}
 a:hover,
 button:hover,
 li:hover {
@@ -23,11 +39,11 @@ input:active {
   border-color: inherit !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
-  color: cyan;
+  color: red;
 }
 .user,
 .pass {
-  color: cyan;
+  color: red;
 }
 
 /*  GENERAL OPTIONS */
@@ -53,6 +69,9 @@ input:active {
 
 /*  LOGIN PAGE */
 
+table {
+  color: red;
+}
 .loginAlerts {
   margin-top: 25px;
   text-align: center;
@@ -68,7 +87,7 @@ input:active {
 
 .logoutBtn {
   background: none;
-  color: cyan;
+  color: red;
 }
 .leftPanel h1 {
   word-wrap: break-word;

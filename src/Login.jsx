@@ -1,6 +1,7 @@
 
 import React, {useRef} from 'react'
 import { createBrowserHistory } from 'history'
+import {ThemeProvider, Global, useTheme} from '@emotion/react'
 
 import Frame from './Frame'
 import Input from './Input'
@@ -11,6 +12,18 @@ import './App.css';
 const  LoginCmp = () => {
 
 
+  const theme = {
+    color: {
+      severity: {
+        verbose: 'pink',
+        debug: 'blue',
+        info: 'teal',
+        warning: 'orange',
+        error: 'red',
+        fatal: 'darkred',
+      }
+    }
+  }
 
 
   const [loginCheck, setLogin] = React.useState('primary')
@@ -82,9 +95,20 @@ const  LoginCmp = () => {
     // Carrega o tipo de frame
     loginFrame.current.Corner()
   }, );
+
+
   return (
 <>
   
+  <ThemeProvider theme={theme}>  
+  
+    <Global styles={{
+      'html, body': {
+        fontFamily: 'monospace',
+        fontSize: 16,
+        backgroundColor: theme.color.error
+      }
+    }} />
 
     <Frame ref={loginFrame} actv={active} theme={loginCheck} className='loginDiv'>
       <form onSubmit={handleSubmit}>
@@ -110,6 +134,7 @@ const  LoginCmp = () => {
         </div>
       </form>   
     </Frame>
+    </ThemeProvider>
     </>
     );
 }

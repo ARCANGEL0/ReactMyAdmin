@@ -8,14 +8,10 @@ import {
 }
 from 'mdbreact';
 
-import {
-  AnimatorGeneralProvider
-}
-from '@arwes/animation';
-import {
-  BleepsProvider
-}
-from '@arwes/sounds';
+import {VscDiffAdded} from 'react-icons/vsc'
+import {MdDeleteOutline, MdOutlineSearch} from 'react-icons/md'
+import {CgDatabase} from 'react-icons/cg'
+import {ImEye} from 'react-icons/im'
 import * as Arwes from '@arwes/core';
 import './App.css';
 import {
@@ -56,97 +52,107 @@ const Content = forwardRef((props, ref) => {
       const [Frame, setFrame] = React.useState(Arwes.FrameBox)
 
 
-      
 
-
-    const datatables = 
-        {
-        columns: [
-          {
+      const datatables = {
+        columns: [{
           label: 'Tabela',
           field: 'tabela',
           width: 150,
           attributes: {
             'aria-controls': 'DataTable',
             'aria-label': 'Tabela',
-          }},
-          {
-            label: 'Visualizar',
-            field: 'visualizar',
-            width: 80,
-            attributes: {
-              'aria-controls': 'DataTable',
-              'aria-label': 'Visualizar',
-            },
-          },
-          {
-            label: 'Estrutura',
-            field: 'estrutura',
-            width: 80,
-            attributes: {
-              'aria-controls': 'DataTable',
-              'aria-label': 'Estrutura',
-            },
-          },
-          {
-            label: 'Procurar',
-            field: 'procurar',
-            width: 80,
-            attributes: {
-              'aria-controls': 'DataTable',
-              'aria-label': 'Procurar',
-            },
-          },
-          {
-            label: 'Inserir',
-            field: 'inserir',
-            width: 80,
-            attributes: {
-              'aria-controls': 'DataTable',
-              'aria-label': 'Inserir',
-            },
-          },
-          {
-            label: 'Apagar',
-            field: 'apagar',
-            width: 80,
-            attributes: {
-              'aria-controls': 'DataTable',
-              'aria-label': 'Apagar',
-            },
           }
-      ],
+        }, {
+          label: 'Visualizar',
+          field: 'visualizar',
+          width: 10,
+          attributes: {
+            'aria-controls': 'DataTable',
+            'aria-label': 'Visualizar',
+          },
+        }, {
+          label: 'Estrutura',
+          field: 'estrutura',
+          width: 10,
+          attributes: {
+            'aria-controls': 'DataTable',
+            'aria-label': 'Estrutura',
+          },
+        }, {
+          label: 'Procurar',
+          field: 'procurar',
+          width: 10,
+          attributes: {
+            'aria-controls': 'DataTable',
+            'aria-label': 'Procurar',
+          },
+        }, {
+          label: 'Inserir',
+          field: 'inserir',
+          width: 10,
+          attributes: {
+            'aria-controls': 'DataTable',
+            'aria-label': 'Inserir',
+          },
+        }, {
+          label: 'Apagar',
+          field: 'apagar',
+          width: 10,
+          attributes: {
+            'aria-controls': 'DataTable',
+            'aria-label': 'Apagar',
+          },
+        }],
 
-rows:
-[]
-        
-        
-      
+        rows: []
 
-      
+
+
       }
 
-      
-        props.cont.map(function(table) {
-              let obj = {}
-                obj.tabela= table;
-                obj.visualizar="Visualizar";
-                obj.inserir="Inserir";
-                obj.apagar="Apagar";
-                obj.procurar="Procurar";
-                obj.estrutura="Estrutura";
-                datatables.rows.push(obj)
-            
-    
-        })
-      
+
+      props.cont.map(function(table) {
+        let obj = {}
+        obj.tabela = table;
+        obj.visualizar = <center><button onClick={() => visualizar(table)}> <ImEye/> </button> </center> ;
+        obj.inserir = <center><button onClick={() => inserir(table)}> <VscDiffAdded/> </button></center> ;
+        obj.apagar = <center><button onClick={() => apagar(table)}> <MdDeleteOutline/> </button></center> ;
+        obj.procurar = <center><button onClick={() => procurar(table)}> <MdOutlineSearch/> </button></center> ;
+        obj.estrutura =<center> <button onClick={() => estrutura(table)}> <CgDatabase/> </button></center> ;
+        datatables.rows.push(obj)
+
+
+      })
+
       console.log(datatables)
-    
-      const { data } = useParams();
 
+      const {
+        data
+      } = useParams();
 
+      // funcoes pra tabelas
+      function visualizar(table) {
+        alert(' ver   ' + table)
+      }
+
+      function inserir(table) {
+        alert(' inserir   ' + table)
+      }
+
+      function apagar(table) {
+        alert(' apagar  ' + table)
+      }
+
+      function procurar(table) {
+        alert(' procurar ' + table)
+      }
+
+      function estrutura(table) {
+        alert(' estrutura de  ' + table)
+      }
+// funcoes pra tabelas
       function removeFrame() {
-
+      
         setActive(false)
       }
 
@@ -183,29 +189,30 @@ rows:
       const [checkbox1, setCheckbox1] = React.useState('');
 
 
-    
-      return ( <>
+
+      return ( < >
 
 
 
-        < MDBDataTableV5   
-        data = { datatables}
+        < MDBDataTableV5 data = {
+          datatables
+        }
 
-        
-        
+
+
         info = {
           false
         }
         paging = {
           false
         }
-         searchTop searchBottom = {
+        searchTop searchBottom = {
           false
         }
         materialSearch / >
 
 
-        </>  );
+        < />  );
 
 
       });

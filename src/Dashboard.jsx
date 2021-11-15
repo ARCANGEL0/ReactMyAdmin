@@ -83,10 +83,12 @@ const Dashboard = () => {
 
   return (
     <>
+
+    
       <Frame
         ref={dashboardFrame}
         actv={active}
-        theme="primary"
+        theme="error"
         className="dashDiv"
       >
         <div className="dashContent">
@@ -109,7 +111,7 @@ const Dashboard = () => {
             <Frame
               ref={tablesFrame}
               actv={active}
-              theme="primary"
+              theme="error"
               className="tablesFrame"
             >
               <br />
@@ -120,7 +122,7 @@ const Dashboard = () => {
                     <Frame
                       ref={databaseItem}
                       actv={active}
-                      theme="primary"
+                      theme="error"
                       className="databaseItem"
                     >
                       <Text as="h1">
@@ -128,7 +130,7 @@ const Dashboard = () => {
                         <button
                           style={{
                             background: "none",
-                            color: "cyan",
+                            color: "red",
                           }}
                           className="databaseItem"
                           onClick={dataItem.bind(this, data.Database)}
@@ -150,7 +152,7 @@ const Dashboard = () => {
               <Frame
                 ref={navFrame}
                 actv={active}
-                theme="primary"
+                theme="error"
                 className="navBar"
               >
                 <Text as="h2">
@@ -162,7 +164,7 @@ const Dashboard = () => {
             <Frame
               ref={contentMain}
               actv={active}
-              theme="primary"
+              theme="error"
               className="frameContent"
             >
              { DBselected ?  <Content cont={tables}> </Content> : 'main page' 
