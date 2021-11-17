@@ -5,13 +5,15 @@ import Content from "./Content";
 import Text from "./Text";
 import Button from "./Button";
 import { CgLogOut } from "react-icons/cg";
-import { MdOutlineHome} from 'react-icons/md';
+import { MdOutlineHome } from "react-icons/md";
 import "./App.css";
 import { useHistory } from "react-router";
 
 const Dashboard = () => {
   const [databases, setDatabases] = React.useState([]);
-  const [DBselected, setDBselected] = React.useState(false)
+  const [DBselected, setDBselected] = React.useState(false);
+  const [databaseCurrent, setCurrentDatabase] = React.useState("");
+
   const [tables, setTables] = React.useState([]);
   const [active, setActive] = React.useState(false);
 
@@ -61,9 +63,11 @@ const Dashboard = () => {
           .flat();
 
         console.log(result);
+        console.log("SELECTED DATABASE:    " + databaseitem);
         // use val
         setTables(result);
         setDBselected(true);
+        setCurrentDatabase(databaseitem);
 
         // I need this data here ^^
       })
@@ -83,8 +87,6 @@ const Dashboard = () => {
 
   return (
     <>
-
-    
       <Frame
         ref={dashboardFrame}
         actv={active}
@@ -96,8 +98,8 @@ const Dashboard = () => {
             <Frame ref={header} actv={active} theme="error" className="header">
               <>
                 <Text theme="red" as="h2">
-                ArcSQL
-  <br />
+                  ArcSQL
+                  <br />
                   <button className="logoutBtn" onClick={logOut}>
                     {" "}
                     <CgLogOut />{" "}
@@ -116,7 +118,32 @@ const Dashboard = () => {
               className="tablesFrame"
             >
               <br />
-
+              <li>
+                <Frame
+                  ref={databaseItem}
+                  actv={active}
+                  theme="success"
+                  className="databaseItem"
+                >
+                  <Text theme="green" as="h1">
+                    {" "}
+                    <button
+                      style={{
+                        background: "none",
+                        color: "chartreuse",
+                      }}
+                      className="databaseItem"
+                      onClick={() => {
+                        alert("funcao pra criar BD");
+                      }}
+                    >
+                      {" "}
+                      CRIAR NOVO BANCO{" "}
+                    </button>
+                  </Text>
+                </Frame>
+              </li>
+              <br />
               {databases.map((data) => (
                 <>
                   <li>
@@ -126,7 +153,7 @@ const Dashboard = () => {
                       theme="error"
                       className="databaseItem"
                     >
-                      <Text  theme="red" as="h1">
+                      <Text theme="red" as="h1">
                         {" "}
                         <button
                           style={{
@@ -168,8 +195,13 @@ const Dashboard = () => {
               theme="error"
               className="frameContent"
             >
-             { DBselected ?  <Content cont={tables}> </Content> : <a className='genericText'>Main page </a> 
-}
+              {DBselected ? (
+                <Content database={databaseCurrent} cont={tables}>
+                  {" "}
+                </Content>
+              ) : (
+                <a className="genericText">Main page </a>
+              )}
             </Frame>{" "}
           </div>
         </div>

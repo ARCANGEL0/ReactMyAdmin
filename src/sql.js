@@ -34,6 +34,40 @@ app.get('/getDatabases', (req,res) => {
 
 })
 
+app.delete('/:datab/Apagar/:table', (req, res ) => {
+
+    const database = req.params.datab
+    const table = req.params.table
+
+
+    var db = mysql.createConnection({
+
+        user:app.settings.user,
+        host:"localhost",
+        multipleStatements: true,
+        password:app.settings.pass,
+        database:database
+    });
+
+    db.connect();
+
+
+    db.query("DROP TABLE "+table+ ";",(err,result)=>{
+        if (err) {
+            console.log(err)
+          res.send(false)
+        } else{
+            console.log(result)
+            res.send(true);
+        }
+    })
+    db.end();
+
+
+
+})
+
+
 app.get('/Database/:datab' , (req,res) => 
 {
         const database = req.params.datab
