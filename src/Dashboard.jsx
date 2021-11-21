@@ -15,7 +15,7 @@ const Dashboard = () => {
   const [databaseCurrent, setCurrentDatabase] = React.useState("");
 
   const [tables, setTables] = React.useState([]);
-  const [active, setActive] = React.useState(false);
+  const [active, setActive] = React.useState(true);
 
   const header = useRef();
   const dashboardFrame = useRef();

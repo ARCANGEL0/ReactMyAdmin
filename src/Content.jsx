@@ -1,6 +1,7 @@
 import "./App.css";
-import React, { useImperativeHandle, forwardRef } from "react";
+import React, { useImperativeHandle, forwardRef, useRef } from "react";
 import { MDBDataTableV5 } from "mdbreact";
+import Frame from "./Frame";
 
 import { VscDiffAdded } from "react-icons/vsc";
 import { MdDeleteOutline, MdOutlineSearch } from "react-icons/md";
@@ -14,10 +15,13 @@ const SOUND_ASSEMBLE_URL =
   "https://playground.arwes.dev/assets/sounds/typing.mp3";
 
 const Content = forwardRef((props, ref) => {
-  const [activate, setActive] = React.useState(true);
-  const [Frame, setFrame] = React.useState(Arwes.FrameBox);
+  const [active, setActive] = React.useState(false);
+  const [Frame, setFrame] = React.useState(Arwes.FrameLines);
   const [error, setError] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
+  const [rerender, setRerender] = React.useState(false);
+
+  const dbTitle = useRef();
 
   const datatables = {
     columns: [
@@ -146,12 +150,14 @@ const Content = forwardRef((props, ref) => {
       if (response.data) {
         setError(false);
         setSuccess(true);
-
         setTimeout(() => setSuccess(false), 2000);
+
+        setRerender(!rerender);
       } else {
         setSuccess(false);
         setError(true);
         setTimeout(() => setError(false), 2000);
+        setRerender(!rerender);
       }
     });
   }
@@ -198,19 +204,32 @@ const Content = forwardRef((props, ref) => {
       Underlines: Underlines,
     };
   });
-  const [checkbox1, setCheckbox1] = React.useState("");
 
   return (
     <>
+      <Frame
+        animator={{ animate: false }}
+        ref={dbTitle}
+        palette="error"
+        className="dbTitle"
+        largeLineWidth={2}
+        smallLineWidth={4}
+        smallLineLength={20}
+        cornerWidth={1}
+        cornerLength={20}
+        showContentLines
+        contentLineWidth={1}
+        hover
+      >
+        {props.database}
+      </Frame>{" "}
       <MDBDataTableV5
         data={datatables}
         info={false}
         paging={false}
         searchTop
         searchBottom={false}
-        materialSearch
       />
-
       {success ? <h2 class="successAlert glitched">SUCCESS </h2> : ""}
       {error ? <h2 class="errorAlert glitched">ERROR </h2> : ""}
     </>
