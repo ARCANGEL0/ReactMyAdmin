@@ -14,13 +14,12 @@ const playersSettings = { assemble: { src: [SOUND_ASSEMBLE_URL], loop: true } };
 const bleepsSettings = { assemble: { player: "assemble" } };
 
 const Frame = forwardRef((props, ref) => {
-  const [activate, setActive] = React.useState(props.actv);
+  const [activate, setActive] = React.useState(true);
   const [Frame, setFrame] = React.useState(Arwes.FrameBox);
 
   function removeFrame() {
     setActive(false);
   }
-
   function Hexagon() {
     setFrame(Arwes.FrameHexagon);
   }
@@ -58,7 +57,7 @@ const Frame = forwardRef((props, ref) => {
         <Arwes.StylesBaseline />
         <AnimatorGeneralProvider animator={animatorGeneral}>
           <Frame
-            animator={{ animate: activate }}
+            animator={{ activate }}
             className={props.classCpm}
             palette={props.theme}
             cornerWidth={1}

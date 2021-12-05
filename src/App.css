@@ -54,6 +54,18 @@ input:active {
   box-shadow: none !important;
   color: red;
 }
+
+html ::-webkit-scrollbar-track,
+body ::-webkit-scrollbar-track {
+  background: rgba(105, 0, 0, 0.308) !important;
+}
+
+html ::-webkit-scrollbar-thumb,
+body ::-webkit-scrollbar-thumb {
+  background: rgba(105, 0, 0, 0.808) !important;
+  border: 1px solid rgba(188, 0, 0, 0.9) !important;
+}
+
 .user,
 .pass {
   color: red;
@@ -175,14 +187,8 @@ li {
 }
 
 .mdb-datatable-filter {
-  background-image: linear-gradient(
-    -135deg,
-    transparent 50px,
-    rgba(255, 0, 0, 0.267) 50px
-  );
-  background-repeat: no-repeat;
-  background-size: 100% 80px;
-  background-position: right 75px bottom;
+  border-left: 3px solid rgba(255, 0, 0, 0.37);
+  border-bottom: 3px solid rgba(255, 0, 0, 0.37);
 }
 
 body * {

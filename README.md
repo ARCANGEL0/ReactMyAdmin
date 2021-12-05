@@ -1,6 +1,6 @@
-# ArcSQL Manager ( Development )
+# ReactMyAdmin ( Development )
 
-Projeto em desenvolvimento de um Sistema Gerenciador de Banco de Dados, com interface customizada usando ReactJS e Node, e
+Projeto em desenvolvimento de um Sistema Gerenciador de Banco de Dados, com interface scifi usando Arwes, ReactJS e Node, e
 posteriormente, exportação para aplicação com Electron
 
 ## Uso
@@ -8,10 +8,10 @@ posteriormente, exportação para aplicação com Electron
 No diretório do projeto, execute os seguintes comandos no terminal
 para rodar o servidor.
 ```bash
-    git clone https://github.com/ARCANGEL0/ArcSQL.git
-    cd ArcSQL
-    npm install
-    npm start
+   $ git clone https://github.com/ARCANGEL0/ReactMyAdmin.git
+   $ cd ReactMyAdmin
+   $ npm install
+   $ npm start
 ```
 E depois basta acessar [http://localhost:3000](http://localhost:3000) para visualizar
 o projeto em desenvolvimento

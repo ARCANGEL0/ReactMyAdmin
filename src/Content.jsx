@@ -151,13 +151,10 @@ const Content = forwardRef((props, ref) => {
         setError(false);
         setSuccess(true);
         setTimeout(() => setSuccess(false), 2000);
-
-        setRerender(!rerender);
       } else {
         setSuccess(false);
         setError(true);
         setTimeout(() => setError(false), 2000);
-        setRerender(!rerender);
       }
     });
   }
