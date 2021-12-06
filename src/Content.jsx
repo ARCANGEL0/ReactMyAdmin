@@ -207,7 +207,7 @@ const Content = forwardRef((props, ref) => {
       <Frame
         animator={{ animate: false }}
         ref={dbTitle}
-        palette="error"
+        palette="primary"
         className="dbTitle"
         largeLineWidth={2}
         smallLineWidth={4}
@@ -219,7 +219,22 @@ const Content = forwardRef((props, ref) => {
         hover
       >
         {props.database}
-      </Frame>{" "}
+      </Frame>
+      <Frame
+        animator={{ animate: false }}
+        palette="error"
+        className="dbDelete"
+        largeLineWidth={1}
+        smallLineWidth={4}
+        smallLineLength={10}
+        cornerWidth={1}
+        cornerLength={3}
+        showContentLines
+        contentLineWidth={0.3}
+        hover
+      >
+        <MdDeleteOutline></MdDeleteOutline>{" "}
+      </Frame>
       <MDBDataTableV5
         data={datatables}
         info={false}

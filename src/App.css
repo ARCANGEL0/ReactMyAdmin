@@ -178,11 +178,14 @@ li {
   width: 80vw;
 }
 
+.dbDelete {
+  color: red;
+}
 .dbTitle {
-  width: 80vw;
+  width: 75vw;
   text-align: center;
-  color: rgb(255, 74, 74);
-  text-shadow: red 2px 2px 4px;
+  color: rgb(74, 255, 255);
+  text-shadow: cyan 2px 2px 4px;
   margin-bottom: 15px;
 }
 

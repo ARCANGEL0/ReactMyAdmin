@@ -34,6 +34,10 @@ const LoginCmp = () => {
 
   const history = createBrowserHistory({ forceRefresh: true });
 
+  setTimeout(function () {
+    localStorage.removeItem("logged");
+  }, 1000 * 60 * 60); //one hour
+
   function removeFrame() {
     loginFrame.current.removeFrame();
     loginU.current.resetInput();

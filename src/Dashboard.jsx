@@ -12,6 +12,8 @@ import { useHistory } from "react-router";
 const Dashboard = () => {
   const [databases, setDatabases] = React.useState([]);
   const [DBselected, setDBselected] = React.useState(false);
+  const [CreateDB, setCreateDB] = React.useState(false);
+
   const [databaseCurrent, setCurrentDatabase] = React.useState("");
 
   const [tables, setTables] = React.useState([]);
@@ -135,6 +137,7 @@ const Dashboard = () => {
                       className="databaseItem"
                       onClick={() => {
                         alert("funcao pra criar BD");
+                        setCreateDB(true);
                       }}
                     >
                       {" "}
@@ -195,7 +198,7 @@ const Dashboard = () => {
               theme="error"
               className="frameContent"
             >
-              {DBselected ? (
+              {DBselected || CreateDB ? (
                 <Content database={databaseCurrent} cont={tables}>
                   {" "}
                 </Content>
