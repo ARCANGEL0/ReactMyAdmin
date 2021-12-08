@@ -40,18 +40,38 @@ const Dashboard = () => {
   }
 
   useEffect(() => {
-    async function getData() {
-      const { data } = await axios.get("http://localhost:800/getDatabases");
-      setDatabases(data);
-    }
+    const interval = setInterval(() => {
+      async function getData() {
+        const { data } = await axios.get("http://localhost:800/getDatabases");
+        setDatabases(data);
+      }
 
-    getData();
+      getData();
+    }, 3000);
+
+    return () => clearInterval(interval);
   }, []);
 
   let axios = require("axios");
 
   if (!localStorage.getItem("logged")) {
     history.push("/");
+  }
+
+  function removeDB() {
+    setDBselected(false);
+  }
+  function refreshTables() {
+    var url = "http://localhost:800/Database/" + databaseCurrent;
+
+    axios.get(url).then(function (response) {
+      var result = response.data
+        .map((element) => Object.values(element))
+        .flat();
+
+      // use val
+      setTables(result);
+    });
   }
 
   function dataItem(databaseitem) {
@@ -64,8 +84,6 @@ const Dashboard = () => {
           .map((element) => Object.values(element))
           .flat();
 
-        console.log(result);
-        console.log("SELECTED DATABASE:    " + databaseitem);
         // use val
         setTables(result);
         setDBselected(true);
@@ -199,7 +217,12 @@ const Dashboard = () => {
               className="frameContent"
             >
               {DBselected || CreateDB ? (
-                <Content database={databaseCurrent} cont={tables}>
+                <Content
+                  refreshTables={refreshTables}
+                  removeDB={removeDB}
+                  database={databaseCurrent}
+                  cont={tables}
+                >
                   {" "}
                 </Content>
               ) : (

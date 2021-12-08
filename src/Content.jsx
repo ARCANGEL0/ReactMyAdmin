@@ -1,5 +1,10 @@
 import "./App.css";
-import React, { useImperativeHandle, forwardRef, useRef } from "react";
+import React, {
+  useImperativeHandle,
+  forwardRef,
+  useRef,
+  useEffect,
+} from "react";
 import { MDBDataTableV5 } from "mdbreact";
 import Frame from "./Frame";
 
@@ -131,8 +136,6 @@ const Content = forwardRef((props, ref) => {
     datatables.rows.push(obj);
   });
 
-  console.log(datatables);
-
   const { data } = useParams();
 
   // funcoes pra tabelas
@@ -142,6 +145,22 @@ const Content = forwardRef((props, ref) => {
 
   function inserir(table) {
     alert(" inserir   " + table);
+  }
+
+  function ApagarDB(databaseSelected) {
+    var url = "http://localhost:800/Apagar/" + databaseSelected;
+    axios.delete(url).then(function (response) {
+      if (response.data) {
+        setError(false);
+        setSuccess(true);
+
+        setTimeout(() => setSuccess(false), 2000);
+      } else {
+        setSuccess(false);
+        setError(true);
+        setTimeout(() => setError(false), 2000);
+      }
+    });
   }
 
   function apagar(table, databaseSelected) {
@@ -158,6 +177,18 @@ const Content = forwardRef((props, ref) => {
       }
     });
   }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      async function refresh() {
+        props.refreshTables();
+      }
+
+      refresh();
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   function procurar(table) {
     alert(" procurar " + table);
@@ -233,7 +264,16 @@ const Content = forwardRef((props, ref) => {
         contentLineWidth={0.3}
         hover
       >
-        <MdDeleteOutline></MdDeleteOutline>{" "}
+        <button
+          onClick={() => {
+            props.removeDB();
+
+            ApagarDB(props.database);
+          }}
+        >
+          {" "}
+          <MdDeleteOutline />{" "}
+        </button>
       </Frame>
       <MDBDataTableV5
         data={datatables}
