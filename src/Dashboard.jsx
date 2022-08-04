@@ -110,14 +110,14 @@ const Dashboard = () => {
       <Frame
         ref={dashboardFrame}
         actv={active}
-        theme="error"
+        theme="primary"
         className="dashDiv"
       >
         <div className="dashContent">
           <div className="leftPanel">
-            <Frame ref={header} actv={active} theme="error" className="header">
+            <Frame ref={header} actv={active} theme="primary" className="header">
               <>
-                <Text theme="red" as="h2">
+                <Text theme="cyan" as="h2">
                   ArcSQL
                   <br />
                   <button className="logoutBtn" onClick={logOut}>
@@ -134,12 +134,12 @@ const Dashboard = () => {
             <Frame
               ref={tablesFrame}
               actv={active}
-              theme="error"
-              className="tablesFrame"
+              theme="primary"              className="tablesFrame"
             >
               <br />
               <li>
                 <Frame
+
                   ref={databaseItem}
                   actv={active}
                   theme="success"
@@ -171,15 +171,14 @@ const Dashboard = () => {
                     <Frame
                       ref={databaseItem}
                       actv={active}
-                      theme="error"
-                      className="databaseItem"
+                      theme="primary"                      className="databaseItem"
                     >
-                      <Text theme="red" as="h1">
+                      <Text theme="cyan" as="h1">
                         {" "}
                         <button
                           style={{
                             background: "none",
-                            color: "red",
+                            color: "cyan",
                           }}
                           className="databaseItem"
                           onClick={dataItem.bind(this, data.Database)}
@@ -201,10 +200,9 @@ const Dashboard = () => {
               <Frame
                 ref={navFrame}
                 actv={active}
-                theme="error"
-                className="navBar"
+                theme="primary"                className="navBar"
               >
-                <Text theme="red" as="h2">
+                <Text theme="cyan" as="h2">
                   Visualizar | Estrutura | Pesquisar | Inserir | SQL | Gatilhos
                   & Eventos & Functions |{" "}
                 </Text>{" "}
@@ -213,8 +211,7 @@ const Dashboard = () => {
             <Frame
               ref={contentMain}
               actv={active}
-              theme="error"
-              className="frameContent"
+              theme="primary"              className="frameContent"
             >
               {DBselected || CreateDB ? (
                 <Content

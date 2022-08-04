@@ -25,8 +25,12 @@ const Content = forwardRef((props, ref) => {
   const [error, setError] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
   const [rerender, setRerender] = React.useState(false);
+  const [seed, setSeed] = React.useState(1);
 
   const dbTitle = useRef();
+
+
+
 
   const datatables = {
     columns: [
@@ -170,6 +174,10 @@ const Content = forwardRef((props, ref) => {
         setError(false);
         setSuccess(true);
         setTimeout(() => setSuccess(false), 2000);
+        // reload component problm
+                props.refreshTables();
+
+
       } else {
         setSuccess(false);
         setError(true);
@@ -261,7 +269,7 @@ const Content = forwardRef((props, ref) => {
         cornerWidth={1}
         cornerLength={3}
         showContentLines
-        contentLineWidth={0.3}
+        contentLineWidth={0.8}
         hover
       >
         <button

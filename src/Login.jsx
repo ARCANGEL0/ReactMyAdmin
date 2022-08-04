@@ -22,8 +22,8 @@ const LoginCmp = () => {
     },
   };
 
-  const [loginCheck, setLogin] = React.useState("error");
-  const [loginCheckTxt, setLoginTxt] = React.useState("red");
+  const [loginCheck, setLogin] = React.useState("primary");
+  const [loginCheckTxt, setLoginTxt] = React.useState("cyan");
   const [active, setActive] = React.useState(true);
 
   const [isLogged, setLoginState] = React.useState(false);
@@ -44,17 +44,17 @@ const LoginCmp = () => {
     loginP.current.resetInput();
   }
   function ErrorLogin() {
-    setLogin("primary");
-    setLoginTxt("cyan");
-    setTimeout(() => setLogin("error"), 2000);
-    setTimeout(() => setLoginTxt("red"), 2000);
+    setLogin("error");
+    setLoginTxt("red");
+    setTimeout(() => setLogin("primary"), 2000);
+    setTimeout(() => setLoginTxt("cyan"), 2000);
   }
 
   function Login() {
     setLogin("success");
     setLoginTxt("chartreuse");
-    setTimeout(() => setLogin("error"), 2000);
-    setTimeout(() => setLoginTxt("red"), 2000);
+    setTimeout(() => setLogin("primary"), 2000);
+    setTimeout(() => setLoginTxt("cyan"), 2000);
     setTimeout(() => removeFrame(), 2000);
     setTimeout(() => setLoginState(true), 3000);
   }
@@ -120,6 +120,8 @@ const LoginCmp = () => {
               ></Input>
               <br />
               <Text theme={loginCheckTxt} tipo="h4">
+
+                  <br/>
                 Senha
               </Text>
               <Input

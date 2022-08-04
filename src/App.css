@@ -26,7 +26,7 @@ body {
 }
 button {
   background: none;
-  color: red;
+  color: cyan;
   width: auto;
   height: auto;
 }
@@ -68,11 +68,11 @@ body ::-webkit-scrollbar-thumb {
 
 .user,
 .pass {
-  color: red;
+  color: cyan;
 }
 
 .genericText {
-  color: red !important;
+  color: cyan !important;
 }
 
 /*  GENERAL OPTIONS */
@@ -99,7 +99,7 @@ body ::-webkit-scrollbar-thumb {
 /*  LOGIN PAGE */
 
 table {
-  color: red;
+  color: cyan;
 }
 .loginAlerts {
   margin-top: 25px;
@@ -116,7 +116,7 @@ table {
 
 .logoutBtn {
   background: none;
-  color: red;
+  color: cyan;
 }
 .leftPanel h1 {
   word-wrap: break-word;
