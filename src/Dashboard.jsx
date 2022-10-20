@@ -3,6 +3,7 @@ import React, { useRef, useEffect } from "react";
 import Frame from "./Frame";
 import Content from "./Content";
 import Text from "./Text";
+import Form from './Form';
 import Button from "./Button";
 import { CgLogOut } from "react-icons/cg";
 import { MdOutlineHome } from "react-icons/md";
@@ -34,6 +35,7 @@ const Dashboard = () => {
 
   function home() {
     setDBselected(false);
+    setCreateDB(false);
   }
   function removeFrame() {
     dashboardFrame.current.removeFrame();
@@ -154,7 +156,7 @@ const Dashboard = () => {
                       }}
                       className="databaseItem"
                       onClick={() => {
-                        alert("funcao pra criar BD");
+                       
                         setCreateDB(true);
                       }}
                     >
@@ -213,7 +215,7 @@ const Dashboard = () => {
               actv={active}
               theme="primary"              className="frameContent"
             >
-              {DBselected || CreateDB ? (
+              {DBselected  ? (
                 <Content
                   refreshTables={refreshTables}
                   removeDB={removeDB}
@@ -222,9 +224,16 @@ const Dashboard = () => {
                 >
                   {" "}
                 </Content>
-              ) : (
+              ) : 
+                CreateDB ? (
+                  <Form/>
+                  )
+                :
+              (
                 <a className="genericText">Main page </a>
-              )}
+              ) 
+
+            }
             </Frame>{" "}
           </div>
         </div>

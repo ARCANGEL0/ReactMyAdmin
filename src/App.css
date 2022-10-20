@@ -189,6 +189,13 @@ li {
   margin-bottom: 15px;
 }
 
+.dbCreate {
+  width: 80vw;
+  text-align: center;
+  color: #39FF14;
+  text-shadow: #39FF14 2px 2px 4px;
+  margin-bottom: 15px;
+}
 .mdb-datatable-filter {
   border-left: 3px solid rgba(255, 0, 0, 0.37);
   border-bottom: 3px solid rgba(255, 0, 0, 0.37);
