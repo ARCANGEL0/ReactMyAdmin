@@ -1,25 +1,25 @@
 # ReactMyAdmin ( Development )
 
-Projeto em desenvolvimento de um Sistema Gerenciador de Banco de Dados, com interface scifi usando Arwes, ReactJS e Node, e
-posteriormente, exportação para aplicação com Electron
+Project in development for a Database Management System, a mirror of myPhpAdmin but written in JS with react, with a scifi interface using Arwes, ReactJS and Node, and later, export to application with Electron
 
-## Uso
+## Usage
 
-No diretório do projeto, execute os seguintes comandos no terminal
-para rodar o servidor.
+
+In the project root folder, run the following commands in terminal
+to run the server.
 ```bash
    $ git clone https://github.com/ARCANGEL0/ReactMyAdmin.git
    $ cd ReactMyAdmin
    $ npm install
    $ npm start
 ```
-E depois basta acessar [http://localhost:3000](http://localhost:3000) para visualizar
-o projeto em desenvolvimento
+And then just access [http://localhost:3000](http://localhost:3000) to view the project under development
+Make sure you have Mysql installed and if it's running!
 
 
 
 
 
-# Executável 
+# Executable 
 
-No momento, ainda não foi desenvolvido o Electron para compilar o react em executavel.
+At the moment, I still haven't used Electronjs to compile React into an executable.
